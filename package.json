@@ -1,0 +1,25 @@
+{
+  "name": "gfc-geolocation",
+  "description": "A Google Cloud Function for IP-based GeoLocation.",
+  "keywords": [
+    "GoogleCloudFunction",
+    "CloudFunction",
+    "IP-Based",
+    "Geolocation",
+    "IP",
+    "address",
+    "lookup",
+    "country",
+    "city",
+    "location",
+    "detection"
+  ],
+  "version": "0.0.1",
+  "author": "Ministry of Programming",
+  "homepage": "https://ministryofprogramming.com",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "city-timezones": "^1.0.5"
+  },
+  "license" : "MIT"
+}
