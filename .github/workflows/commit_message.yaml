@@ -1,0 +1,23 @@
+name: Check Commit Messages
+
+on:
+  push:
+    branches:
+      - '*'  # Change this to your default branch
+  pull_request:
+    branches:
+      - '*'  # Change this to your default branch
+
+jobs:
+  commit-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check commit messages
+        run: |
+          if ! git log -1 --pretty=%B | grep -qE '^\[Main-[0-9]+\] - .+$'; then
+            echo "ERROR: Commit message does not match format '[Main-xxxx] - Some message'."
+            exit 1
+          fi
