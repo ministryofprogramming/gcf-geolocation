@@ -3,10 +3,10 @@ name: Check Commit Messages
 on:
   push:
     branches:
-      - '*'  # Change this to your default branch
+      - '*'  # Trigger on pushes to any branch
   pull_request:
     branches:
-      - '*'  # Change this to your default branch
+      - '*'  # Trigger on pull requests to any branch
 
 jobs:
   commit-message:
@@ -17,7 +17,11 @@ jobs:
 
       - name: Check commit messages
         run: |
-          if ! git log -1 --pretty=%B | grep -qE '^\[Main-[0-9]+\] - .+$'; then
+          # Get the last commit message
+          commit_message=$(git log -1 --pretty=%B)
+
+          # Check if the commit message matches the regex
+          if ! echo "$commit_message" | grep -qE '^\[Main-\d+\] - .+$'; then
             echo "ERROR: Commit message does not match format '[Main-xxxx] - Some message'."
             exit 1
           fi
