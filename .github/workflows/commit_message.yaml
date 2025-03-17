@@ -20,8 +20,8 @@ jobs:
           # Get the last commit message
           commit_message=$(git log -1 --pretty=%B)
 
-          # Check if the commit message matches the regex
-          if ! echo "$commit_message" | grep -qE '^\[Main-\d+\] - .+$'; then
+          # Check if the commit message matches the updated regex
+          if ! echo "$commit_message" | grep -qE ^\[Main-\d+\] - .+$; then
             echo "ERROR: Commit message does not match format '[Main-xxxx] - Some message'."
             exit 1
           fi
