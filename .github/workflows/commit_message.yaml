@@ -1,4 +1,4 @@
-name: Check Commit Messages
+name: Commit Message Check
 
 on:
   push:
@@ -15,13 +15,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Check commit messages
+      - name: Set up script
         run: |
-          # Get the last commit message and remove new lines
-          commit_message=$(git log -1 --pretty=%B | tr -d '\n')
+          echo "Setting up the commit message check script."
+          chmod +x ./test.sh  # Make the script executable
 
-          # Check if the commit message matches the updated regex
-          if ! echo "$commit_message" | grep -qE '^\[Main-\d+\] - .+$'; then
-            echo "ERROR: Commit message does not match format '[Main-xxxx] - Some message'."
-            exit 1
-          fi
+      - name: Run commit message check
+        run: |
+          ./test.sh           # Execute the script
