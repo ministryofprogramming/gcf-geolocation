@@ -17,6 +17,8 @@ jobs:
 
       - name: Set up script
         run: |
+          commit_message=$(git log -1 --pretty=%B | tr -d '\n')
+          echo "Commit message: $commit_message"
           echo "Setting up the commit message check script."
           chmod +x ./test.sh  # Make the script executable
 
