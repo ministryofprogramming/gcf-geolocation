@@ -17,7 +17,7 @@ jobs:
 
       - name: Check commit messages
         run: |
-          if ! git log -1 --pretty=%B | grep -qE '^\[Main-\d+\] - .+$'; then
+          if ! git log -1 --pretty=%B | grep -qE ^\[Main-\d+\] - .+$; then
             echo "ERROR: Commit message does not match format '[Main-xxxx] - Some message'."
             exit 1
           fi
